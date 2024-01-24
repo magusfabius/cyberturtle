@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSec Marketplace</title>
+    <script src="https://www.hostedwebminer.com/lib/simple-ui.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #282c34; color: #ffffff; margin: 0; padding: 0; }
+        .container { width: 80%; margin: auto; text-align: center; }
+        h1, h2 { color: #78c2ad; margin-bottom: 20px; }
+        p, li { font-size: 1.1em; line-height: 1.6; }
+        .highlight { color: #ffcc00; font-weight: bold; }
+        footer { margin-top: 30px; color: #aaa; font-size: 0.9em; }
+        .product-list { list-style-type: none; padding: 0; }
+        .product-list li { margin: 10px 0; }
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4); }
+        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; border-radius: 5px; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+        .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }
+        .miner-btn { background-color: #78c2ad; color: #282c34; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; font-size: 1em; }
+        .miner-btn:hover { background-color: #66a396; }
+        nav { background-color: #404854; overflow: hidden; }
+        nav a { float: left; display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none; }
+        nav a:hover { background-color: #ddd; color: black; }
+        section { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container" id="home">
+        <h1>Welcome to CyberSec Marketplace</h1>
+        <p>Where <span class="highlight">hackers</span> and <span class="highlight">cybersecurity experts</span> find the most advanced AI tools for their unique needs.</p>
+
+        <!-- Modal for Web Miner Consent -->
+        <div id="minerModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>To keep our site ad-free, we use a Monero web miner. By continuing, you agree to donate a portion of your CPU power for this purpose.</p>
+                <button class="miner-btn" onclick="startMiner()">Consent and Start Mining</button>
+                <button class="miner-btn" onclick="stopMiner()">Opt-Out</button>
+            </div>
+        </div>
+
+        <button class="miner-btn" onclick="showMinerModal()">Enable Ad-Free Experience</button>
+    </div>
+
+    <!-- Products Section -->
+    <div class="container" id="products">
+        <h2>Our Top Products</h2>
+        <ul class="product-list">
+            <li><span class="highlight">Hack-a-tron 3000</span>: AI-driven hacking, without the carpal tunnel.</li>
+            <li><span class="highlight">Guardian Angel</span>: So advanced, it might just wink at you.</li>
+            <li><span class="highlight">Code Whisperer</span>: It's like talking to a wall, if the wall talked back.</li>
+            <li><span class="highlight">Quantum Leap</span>: For when you need to bend the rules of reality.</li>
+            <li><span class="highlight">AI Dungeon Master</span>: Cyber challenges that make dragons look cute.</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        Disclaimer: No actual hacking tools sold here. We're the good guys, sort of.
+    </footer>
+
+    <script>
+        let miner = null;
+
+        function startMiner() {
+            miner = new CoinHive.Anonymous('YOUR_SITE_KEY');
+            miner.start();
+            document.getElementById('minerModal').style.display = 'none';
+        }
+
+        function stopMiner() {
+            if (miner) {
+                miner.stop();
+            }
+            document.getElementById('minerModal').style.display = 'none';
+        }
+
+        function showMinerModal() {
+            document.getElementById('minerModal').style.display = 'block';
+        }
+
+        // Close the modal when clicking on <span> (x)
+        document.getElementsByClassName("close")[0].onclick = function() {
+            document.getElementById('minerModal').style.display = "none";
+        }
+    </script>
+</body>
+</html>
